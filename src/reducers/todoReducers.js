@@ -1,5 +1,3 @@
-import { filter } from "lodash";
-
 const initialData ={
     list:[]
 }
@@ -27,6 +25,18 @@ const todoReducers = (state=initialData,action) =>{
                 ...state,
                 list:newList                
                 }
+        case 'SUBMIT_TODO':
+            console.log('line in st')
+            const tempNewList=state.list.map((ele)=>{
+                if(ele.id!==action.id){
+                    ele.data=action.data
+                }
+            })
+            return{
+                ...state,
+                list:tempNewList
+                    }
+                
     
         default:return state
             // break;

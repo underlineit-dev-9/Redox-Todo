@@ -15,3 +15,10 @@ export const deleteTodo =(id)=>{
         id:id
     }
 }
+export const submitTodo=(id,newtask) =>{
+    return{
+        type:"SUBMIT_TODO",
+        id:id,
+        data:newtask
+    }
+}
