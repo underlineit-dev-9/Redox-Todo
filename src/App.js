@@ -31,7 +31,7 @@ export default function App() {
           </div>
         </div>
         {list.map((element) =>(
-          <Todo ele={element} />
+          <Todo ele={element} key={element.id} />
         ))}
       </center>
     </div>

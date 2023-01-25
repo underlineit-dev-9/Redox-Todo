@@ -21,7 +21,7 @@ export default function Todo(ele) {
               onChange={(e) => setEditedTask(e.target.value)}
             />{" "}
             <button
-            onClick={()=>dispatch(submitTodo(ele.ele.id,editedTask))}
+            onClick={()=>dispatch(submitTodo(ele.ele.id,editedTask),setCanEdit(false))}
             >
               Submit
             </button>

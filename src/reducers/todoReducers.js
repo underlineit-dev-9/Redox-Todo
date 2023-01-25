@@ -20,22 +20,26 @@ const todoReducers = (state=initialData,action) =>{
         
         case 'DELETE_TODO':
             const newList =state.list.filter((ele) => ele.id!==action.id)
+            console.log('line form dt',newList)
             
             return{
                 ...state,
                 list:newList                
                 }
+                
         case 'SUBMIT_TODO':
-            console.log('line in st')
-            const tempNewList=state.list.map((ele)=>{
-                if(ele.id!==action.id){
-                    ele.data=action.data
-                }
+            const {index,newTask} = action.payload;
+            const tempNewList=state.list.filter((element)=>{
+                if(element.id===index){
+                    return element.data=newTask
+                }return true
+                
             })
+            console.log('line is st',tempNewList)
             return{
                 ...state,
                 list:tempNewList
-                    }
+            }
                 
     
         default:return state

@@ -18,7 +18,9 @@ export const deleteTodo =(id)=>{
 export const submitTodo=(id,newtask) =>{
     return{
         type:"SUBMIT_TODO",
-        id:id,
-        data:newtask
+        payload:{
+            index:id,
+            newTask:newtask
+        }
     }
 }
