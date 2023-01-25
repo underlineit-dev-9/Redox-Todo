@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "./actions";
 import Todo from "./components/Todo";
 
 export default function App() {
-
   const dispatch = useDispatch();
   const [inputData, setInputData] = useState("");
 
   const list = useSelector((state) => state.todoReducers.list);
-
 
   return (
     <div>
@@ -24,13 +22,19 @@ export default function App() {
               onChange={(e) => setInputData(e.target.value)}
             />{" "}
             <button
-              onClick={() => dispatch(addTodo(inputData), setInputData(""))}
+              onClick={() => {
+                if (inputData === "") {
+                  alert("you are not allowed to enter empty box");
+                } else {
+                  dispatch(addTodo(inputData), setInputData(""));
+                }
+              }}
             >
               Add
             </button>
           </div>
         </div>
-        {list.map((element) =>(
+        {list.map((element) => (
           <Todo ele={element} key={element.id} />
         ))}
       </center>
